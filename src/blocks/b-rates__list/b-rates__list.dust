@@ -1,8 +1,8 @@
 <div class="b-rates__list">
-	<div>{data.created}</div>
+	<div>{data.date}</div>
 	<ul>
-		{#data.results.rate}
-			<li>{Name}: {Rate}</li>
-		{/data.results.rate}
+		{#data.rates}
+			<li>USD/{id}: {value}</li>
+		{/data.rates}
 	</ul>
 </div>

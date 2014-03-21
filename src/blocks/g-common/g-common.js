@@ -110,6 +110,11 @@
 
 			return [].slice.call(node.querySelectorAll(selector));
 		},
+		trigger: function (element, event) {
+			var evt = document.createEvent("HTMLEvents");
+			evt.initEvent(event, false, true);
+			element.dispatchEvent(evt);
+		},
 		// замена элемента на новый, созданный из html-строки
 		replace: function (html, destination) {
 			var e = document.createElement('div'),
@@ -148,6 +153,28 @@
 			window[callbackName] = callback;
 
 			document.body.appendChild(script);
+		},
+		getJSON: function (url, callback) {
+			var request = new XMLHttpRequest();
+
+			request.open('GET', url, true);
+
+			request.onreadystatechange = function () {
+				var response;
+				if (request.readyState != 4 || request.status != 200) return;
+
+				try {
+					response = JSON.parse(request.responseText);
+				} catch (e) {
+					response = request.responseText;
+				}
+
+				callback(response);
+			};
+
+			request.send('');
+
+			return request;
 		}
 	};
 

@@ -1,68 +1,50 @@
 (function (window, $) {
 	$.register('b-rates', {
 		init: function () {
+			var refreshTimeout;
 			this.render();
-
-			this.timeout = 10000; // дефолтное значение
 
 			this.listen('timeout', timeout => {
 				this.timeout = timeout;
 
-				console.log(timeout);
+				this.fetchData();
 			});
 
+			refreshTimeout = $.find('#refreshTimeout')[0];
+			this.timeout = refreshTimeout.options[refreshTimeout.selectedIndex].value;
 			this.fetchData();
 		},
 		fetchData: function () {
-			var from = 'USD',
-				to = 'EUR',
-				pairs = [
-					'"USDEUR"',
-					'"USDJPY"',
-					'"USDBGN"',
-					'"USDCZK"',
-					'"USDDKK"',
-					'"USDGBP"',
-					'"USDHUF"',
-					'"USDLTL"',
-					'"USDLVL"',
-					'"USDPLN"',
-					'"USDRON"',
-					'"USDSEK"',
-					'"USDCHF"',
-					'"USDNOK"',
-					'"USDHRK"',
-					'"USDRUB"',
-					'"USDTRY"',
-					'"USDAUD"',
-					'"USDBRL"',
-					'"USDCAD"',
-					'"USDCNY"',
-					'"USDHKD"',
-					'"USDIDR"',
-					'"USDILS"',
-					'"USDINR"',
-					'"USDKRW"',
-					'"USDMXN"',
-					'"USDMYR"',
-					'"USDNZD"',
-					'"USDPHP"',
-					'"USDSGD"',
-					'"USDTHB"',
-					'"USDZAR"',
-					'"USDISK"',
-					'"EURUSD"'
-				],
-				url = [
-					"http://query.yahooapis.com/v1/public/yql?format=json&q=select%20*%20from%20yahoo.finance.xchange%20where%20pair%20in%20%28",
-					pairs.join(','),
-					"%29&env=store://datatables.org/alltableswithkeys"
-				].join('');
+			var apiKey = '9776f7e82f374e90b683221149c42e9e',
+				url = 'http://openexchangerates.org/api/latest.json?app_id=' + apiKey;
 
-			$.getJSONP(url, 'parseExchangeRate', data => {
-				this.emit('updateRates', data.query);
+			if (this.request) {
+				this.request.abort();
+			}
 
-				window.setTimeout(() => {
+			if (this.requestTimeout) {
+				window.clearTimeout(this.requestTimeout);
+				this.requestTimeout = undefined;
+			}
+
+			this.request = $.getJSON(url, data => {
+				var rateId,
+					rates = [];
+
+				for (rateId in data.rates) {
+					if (data.rates.hasOwnProperty(rateId)) {
+						rates.push({
+							id: rateId,
+							value: data.rates[rateId]
+						});
+					}
+				}
+
+				data.rates = rates;
+
+				this.emit('updateRates', data);
+
+				this.requestTimeout = window.setTimeout(() => {
 					this.fetchData();
 				}, this.timeout);
 			});
