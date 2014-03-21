@@ -1,3 +1,11 @@
 <div class="b-rates__symbols">
-
+	{#data.favorites}
+		<div>USD/{id}</div>
+	{/data.favorites}
+	<select>
+	{#data.all}
+		<option value="{id}">USD/{id}</option>
+	{/data.all}
+	</select>
+	<button>{i18n.add}</button>
 </div>
