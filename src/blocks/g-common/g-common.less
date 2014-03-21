@@ -1,12 +1,43 @@
 @import "i-variables/i-variables.less";
 
-body {
+html, body {
 	padding: 0;
 	margin: 0;
+}
 
+body {
 	background: @colorBackground;
 
 	color: @colorText;
 	font-family: Arial, sans-serif;
+	font-size: @sizeFontBase;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 20px 0 10px;
+	padding: 0;
+}
+
+h1 {
+	font-size: @sizeFontBase + 10;
+}
+
+h2 {
+	font-size: @sizeFontBase + 8;
+}
+
+h3 {
+	font-size: @sizeFontBase + 6;
+}
+
+h4 {
+	font-size: @sizeFontBase + 4;
+}
+
+h5 {
+	font-size: @sizeFontBase + 2;
+}
+
+h6 {
 	font-size: @sizeFontBase;
 }

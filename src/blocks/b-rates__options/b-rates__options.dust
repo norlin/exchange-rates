@@ -1,0 +1,12 @@
+<div class="b-rates__options">
+	<h3>{i18n.settings}</h3>
+
+	<div class="b-rates__row">
+		<label class="b-rates__label" for="refreshTimeout">{i18n.refreshTimeout}</label>
+		<select class="b-rates__input" id="refreshTimeout" name="timeout">
+			{#data.values}
+				<option value="{value}"{?active} selected{/active}>{text}</option>
+			{/data.values}
+		</select>
+	</div>
+</div>

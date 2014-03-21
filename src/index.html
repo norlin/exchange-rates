@@ -6,11 +6,16 @@
 
 	<link rel="stylesheet" type="text/css" href="css/_styles.css" />
 
-	<script src="js/_scripts.js"></script>
+	<script type="application/javascript" src="js/_scripts.js"></script>
 </head>
 <body>
-	<p>Hello, world!</p>
+	<div class="js-block" data-block="b-header"></div>
+	<div class="js-block" data-block="b-rates"></div>
 
-	<div id="wrapper"></div>
+	<script type="application/javascript">
+		(function() {
+			$.initBlocks(window.document);
+		}());
+	</script>
 </body>
 </html>

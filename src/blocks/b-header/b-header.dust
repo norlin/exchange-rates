@@ -1,0 +1,3 @@
+<header class="b-header">
+	<h1 class="b-header__title">{i18n.title}</h1>
+</header>

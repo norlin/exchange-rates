@@ -1,1 +1,11 @@
-<div class="b-rates">{hello}</div>
+<div class="b-rates">
+	<h2>Котировки</h2>
+
+	<div class="b-rates__block b-rates__block_left">
+		<div class="js-block" data-block="b-rates__options"></div>
+		<div class="js-block" data-block="b-rates__symbols"></div>
+	</div>
+	<div class="b-rates__block">
+		<div class="js-block" data-block="b-rates__list"></div>
+	</div>
+</div>

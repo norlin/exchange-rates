@@ -8,6 +8,9 @@ module.exports = function(grunt) {
 			}
 		},
 		jshint: {
+			options: {
+				esnext: true,
+			},
 			build: {
 				src: ['src/blocks/**/*.js']
 			}
@@ -25,7 +28,8 @@ module.exports = function(grunt) {
 		dust: {
 			build: {
 				options: {
-					wrapper: false
+					wrapper: false,
+					basePath: 'src/blocks/'
 				},
 				files: {
 					'tmp/scripts/templates.js': 'src/blocks/**/*.dust'
