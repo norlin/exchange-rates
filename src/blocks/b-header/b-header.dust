@@ -1,3 +1,5 @@
 <header class="b-header">
-	<h1 class="b-header__title">{i18n.title}</h1>
+	<h1 class="b-header__title">
+		{i18n.title} <button class="b-button js-pause">{i18n.pause}</button>
+	</h1>
 </header>

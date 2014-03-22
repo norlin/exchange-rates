@@ -110,6 +110,10 @@
 
 			return [].slice.call(node.querySelectorAll(selector));
 		},
+		addClass: function (node, className) {
+			var classes = className.split(' ');
+			// TODO: добавление и удаление классов
+		},
 		trigger: function (element, event) {
 			var evt = document.createEvent("HTMLEvents");
 			evt.initEvent(event, false, true);
