@@ -1,7 +1,7 @@
 <div class="b-rates__list">
 	<h3>{i18n.ratesList}</h3>
 
-	{?data.rates}
+	{?data}
 		<div class="b-rates__row b-rates__row_active">
 			<span class="b-rates__label">{i18n.requestTime}</span>
 			<span class="b-rates__input g-align_right">{data.requestTime}</span>
@@ -10,6 +10,7 @@
 			<span class="b-rates__label">{i18n.updateTime}</span>
 			<span class="b-rates__input g-align_right">{data.date}</span>
 		</div>
+
 		{#data.rates}
 			<div class="b-rates__row b-rates__row_active">
 				<span class="b-rates__label">
@@ -20,10 +21,10 @@
 					<button class="b-button b-button_red js-remove-button" value="{id}">{i18n.remove}</button>
 				</span>
 			</div>
-		{/data.rates}
-	{:else}
+		{:else}
 		<div class="b-rates__row">
-			{i18n.selectCurrencies}
+			<h4>{i18n.selectCurrencies}</h4>
 		</div>
-	{/data.rates}
+		{/data.rates}
+	{/data}
 </div>

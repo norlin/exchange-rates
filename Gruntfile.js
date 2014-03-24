@@ -15,6 +15,17 @@ module.exports = function(grunt) {
 				src: ['src/blocks/**/*.js']
 			}
 		},
+		traceur: {
+			build: {
+				files: {
+					'tmp/scripts/scripts.js': [
+						'src/blocks/i-*/*.js',
+						'src/blocks/g-*/*.js',
+						'src/blocks/b-*/*.js'
+					]
+				}
+			}
+		},
 		less: {
 			build: {
 				options: {
@@ -38,12 +49,7 @@ module.exports = function(grunt) {
 		},
 		concat: {
 			build: {
-				src: [
-					'tmp/scripts/*.js',
-					'src/blocks/i-*/*.js',
-					'src/blocks/g-*/*.js',
-					'src/blocks/b-*/*.js'
-				],
+				src: 'tmp/scripts/*.js',
 				dest: 'build/js/_scripts.js'
 			}
 		},
@@ -57,12 +63,13 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-traceur');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-dust');
 
 	// Default task(s).
-	grunt.registerTask('default', ['clean', 'less', 'jshint', 'dust', 'concat', 'copy',]);
+	grunt.registerTask('default', ['clean', 'less', 'jshint', 'traceur', 'dust', 'concat', 'copy',]);
 
 };
