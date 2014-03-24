@@ -1,0 +1,7 @@
+<div class="b-lang-switch">
+	<select>
+		{#data}
+			<option value="{id}"{?active} selected{/active}>{title}</option>
+		{/data}
+	</select>
+</div>

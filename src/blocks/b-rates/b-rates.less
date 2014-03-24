@@ -18,9 +18,15 @@
 		margin: 2px 0;
 		padding: 2px 0;
 
-		&:hover {
-			background: darken(@colorBackground, 5%)
+		border-bottom: 1px solid #efefef;
+
+		&:last-child {
+			border-bottom: none;
 		}
+
+		//&_active:hover {
+		//	background: darken(@colorBackground, 3%)
+		//}
 	}
 
 	&__label,
@@ -34,5 +40,16 @@
 
 	&__input {
 		width: 40%;
+	}
+
+	&__currency {
+		padding-right: 10px;
+
+		font-weight: bold;
+	}
+
+	&__value {
+		font-weight: bold;
+		font-size: @sizeFontBase + 2;
 	}
 }

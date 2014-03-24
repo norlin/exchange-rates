@@ -1,5 +1,5 @@
-<div class="b-rates">
-	<h2>Котировки</h2>
+<div class="b-rates g-holder">
+	<h2>{i18n.rates}</h2>
 
 	<div class="b-rates__block b-rates__block_left">
 		<div class="js-block" data-block="b-rates__options"></div>

@@ -9,10 +9,12 @@
 				this.fetchData();
 			});
 
+			// запуск обновления
 			this.listen('start', () => {
 				this.start();
 			});
 
+			// остановка обновления
 			this.listen('stop', () => {
 				this.stop();
 			});
@@ -54,6 +56,8 @@
 				return;
 			}
 
+			this.breakRequest();
+
 			this.request = $.getJSON(url, data => {
 				var rateId,
 					rates = [];
@@ -68,6 +72,7 @@
 				}
 
 				data.rates = rates;
+				data.requestTime = (new Date());
 
 				this.emit('updateRates', data);
 

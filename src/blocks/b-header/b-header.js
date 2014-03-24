@@ -4,7 +4,8 @@
 			this.working = true;
 			this.render();
 
-			$.find('.js-pause', this.node)[0].addEventListener('click', () => {
+			this.pauseButton = $.find('.js-pause', this.node)[0];
+			$.bind(this.pauseButton, 'click', () => {
 				this.working = !this.working;
 
 				this.update();
@@ -12,8 +13,10 @@
 		},
 		update: function () {
 			if (this.working) {
+				$.removeClass(this.pauseButton, 'b-button_pressed');
 				this.emit('start');
 			} else {
+				$.addClass(this.pauseButton, 'b-button_pressed');
 				this.emit('stop');
 			}
 		}

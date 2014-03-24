@@ -1,23 +1,36 @@
 <div class="b-rates__symbols">
+	<h3>{i18n.symbols}</h3>
 	{#data.favorites}
-		<div class="b-rates__row">
-			<label class="b-rates__label">USD/{id}</label>
-			<button class="b-rates__input">{i18n.add}</button>
+		<div class="b-rates__row b-rates__row_active">
+			<span class="b-rates__label">
+				<span class="b-rates__currency">USD/{id}</span>
+			</span>
+			<span class="b-rates__input g-align_right">
+				{?selected}
+				<button class="b-button b-button_red js-remove-button" value="{id}">{i18n.remove}</button>
+				{:else}
+				<button class="b-button b-button_green js-add-button" value="{id}">{i18n.add}</button>
+				{/selected}
+			</span>
 		</div>
 	{/data.favorites}
 
+	{?data.all}
 	<div class="b-rates__row">
 		<span class="b-rates__label">
-			<select>
+			<select disabled>
 				<option value="{id}" selected>USD</option>
 			</select>
 			&nbsp;/&nbsp;
-			<select>
+			<select class="js-custom-currency">
 			{#data.all}
 				<option value="{id}">{id}</option>
 			{/data.all}
 			</select>
 		</span>
-		<button class="b-rates__input">{i18n.add}</button>
+		<span class="b-rates__input g-align_right">
+			<button class="b-button b-button_green js-custom-add-button">{i18n.add}</button>
+		</span>
 	</div>
+	{/data.all}
 </div>

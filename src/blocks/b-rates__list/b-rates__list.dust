@@ -1,8 +1,29 @@
 <div class="b-rates__list">
-	<div>{data.date}</div>
-	<ul>
+	<h3>{i18n.ratesList}</h3>
+
+	{?data.rates}
+		<div class="b-rates__row b-rates__row_active">
+			<span class="b-rates__label">{i18n.requestTime}</span>
+			<span class="b-rates__input g-align_right">{data.requestTime}</span>
+		</div>
+		<div class="b-rates__row b-rates__row_active">
+			<span class="b-rates__label">{i18n.updateTime}</span>
+			<span class="b-rates__input g-align_right">{data.date}</span>
+		</div>
 		{#data.rates}
-			<li>USD/{id}: {value}</li>
+			<div class="b-rates__row b-rates__row_active">
+				<span class="b-rates__label">
+					<span class="b-rates__currency">USD/{id}</span>
+					<span class="b-rates__value">{value}</span>
+				</span>
+				<span class="b-rates__input g-align_right">
+					<button class="b-button b-button_red js-remove-button" value="{id}">{i18n.remove}</button>
+				</span>
+			</div>
 		{/data.rates}
-	</ul>
+	{:else}
+		<div class="b-rates__row">
+			{i18n.selectCurrencies}
+		</div>
+	{/data.rates}
 </div>

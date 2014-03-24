@@ -1,0 +1,80 @@
+@import "i-styles/i-variables.less";
+
+.b-button {
+	// Default button styles (grey)
+	display: inline-block;
+	height: 24px;
+	line-height: 18px;
+	min-width: 60px;
+
+	vertical-align: middle;
+
+	border: 1px solid #dcdcdc;
+	border-radius: 10px;
+
+	color: lighten(#777, 10%);
+	font-size: @sizeFontBase;
+	font-weight: bold;
+
+	text-indent: 0px;
+	text-decoration: none;
+	text-align: center;
+	text-shadow: 1px 1px 0px #fff;
+
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #efefef), color-stop(1, #bfbfbf) );
+	background: -moz-linear-gradient( center top, #efefef 5%, #bfbfbf 100% );
+	background-color: #ededed;
+
+	cursor: pointer;
+
+	&:hover {
+		color: #777;
+	}
+
+	&_pressed,
+	&:active {
+		background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #bfbfbf), color-stop(1, #efefef) );
+		background: -moz-linear-gradient( center top, #bfbfbf 5%, #efefef 100% );
+		background-color: #dfdfdf;
+	}
+
+	// Green button
+	&_green {
+		border-color: #268a16;
+		box-shadow: inset 0px 1px 0px 0px #caefab;
+
+		background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #77d42a), color-stop(1, #5cb811) );
+		background: -moz-linear-gradient( center top, #77d42a 5%, #5cb811 100% );
+		background-color: #77d42a;
+
+		color: #306108;
+		text-shadow: 1px 1px 0px #aade7c;
+
+		&.b-button_pressed,
+		&:active {
+			background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #5cb811), color-stop(1, #77d42a) );
+			background: -moz-linear-gradient( center top, #5cb811 5%, #77d42a 100% );
+			background-color: #5cb811;
+		}
+	}
+
+	// Red button
+	&_red {
+		border-color: #d02718;
+		box-shadow: inset 0px 1px 0px 0px #f5978e;
+
+		background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f24537), color-stop(1, #c62d1f) );
+		background: -moz-linear-gradient( center top, #f24537 5%, #c62d1f 100% );
+		background-color: #f24537;
+
+		color: #613008;
+		text-shadow: 1px 1px 0px #de777c;
+
+		&.b-button_pressed,
+		&:active {
+			background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c62d1f), color-stop(1, #f24537) );
+			background: -moz-linear-gradient( center top, #c62d1f 5%, #f24537 100% );
+			background-color: #c62d1f;
+		}
+	}
+}

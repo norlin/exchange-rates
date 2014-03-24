@@ -1,5 +1,8 @@
 <header class="b-header">
-	<h1 class="b-header__title">
-		{i18n.title} <button class="b-button js-pause">{i18n.pause}</button>
-	</h1>
+	<div class="g-holder">
+		<div class="js-block" data-block="b-lang-switch"></div>
+		<h1 class="b-header__title">
+			{i18n.title} <button class="b-button b-header__button js-pause">{i18n.pause}</button>
+		</h1>
+	</div>
 </header>
