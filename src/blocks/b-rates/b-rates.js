@@ -62,19 +62,23 @@
 				var rateId,
 					rates = [];
 
-				for (rateId in data.rates) {
-					if (data.rates.hasOwnProperty(rateId)) {
-						rates.push({
-							id: rateId,
-							value: data.rates[rateId]
-						});
+				if (data) {
+					for (rateId in data.rates) {
+						if (data.rates.hasOwnProperty(rateId)) {
+							rates.push({
+								id: rateId,
+								value: data.rates[rateId]
+							});
+						}
 					}
+
+					data.rates = rates;
+					data.requestTime = (new Date());
+
+					this.emit('updateRates', data);
+				} else {
+					this.render({error: true});
 				}
-
-				data.rates = rates;
-				data.requestTime = (new Date());
-
-				this.emit('updateRates', data);
 
 				this.requestTimeout = window.setTimeout(() => {
 					this.fetchData();

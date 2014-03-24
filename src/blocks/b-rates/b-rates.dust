@@ -1,11 +1,17 @@
 <div class="b-rates g-holder">
 	<h2>{i18n.rates}</h2>
 
-	<div class="b-rates__block b-rates__block_left">
-		<div class="js-block" data-block="b-rates__options"></div>
-		<div class="js-block" data-block="b-rates__symbols"></div>
-	</div>
-	<div class="b-rates__block">
-		<div class="js-block" data-block="b-rates__list"></div>
-	</div>
+	{^data.error}
+		<div class="b-rates__block b-rates__block_left">
+			<div class="js-block" data-block="b-rates__options"></div>
+			<div class="js-block" data-block="b-rates__symbols"></div>
+		</div>
+		<div class="b-rates__block">
+			<div class="js-block" data-block="b-rates__list"></div>
+		</div>
+	{:else}
+		<div class="b-rates__block">
+			{i18n.errorMessage}
+		</div>
+	{/data.error}
 </div>

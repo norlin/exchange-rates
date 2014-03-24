@@ -232,10 +232,7 @@
 
 			request.open('GET', url, true);
 
-			request.onreadystatechange = function () {
-				var response;
-				if (request.readyState != 4 || request.status != 200) return;
-
+			request.onload = function () {
 				try {
 					response = JSON.parse(request.responseText);
 				} catch (e) {
@@ -245,7 +242,11 @@
 				callback(response);
 			};
 
-			request.send('');
+			request.onerror = function () {
+				callback();
+			};
+
+			request.send(null);
 
 			return request;
 		},
@@ -322,6 +323,15 @@
 				addZero(date.getMinutes()),
 				addZero(date.getSeconds())
 			].join(':');
+		},
+		saveData: function (name, data) {
+			data = JSON.stringify(data);
+			window.localStorage.setItem(name, data);
+		},
+		restoreData: function (name) {
+			var data = window.localStorage.getItem(name);
+
+			return JSON.parse(data);
 		}
 	};
 

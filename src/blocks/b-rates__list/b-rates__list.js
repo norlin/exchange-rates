@@ -1,7 +1,9 @@
 (function (window, $) {
 	$.register('b-rates__list', {
 		init: function () {
-			this.selected = [];
+			this.firstUpdate = true;
+
+			this.selected = $.restoreData('selected') || [];
 			this.render();
 
 			this.listen('updateRates', data => {
@@ -40,6 +42,13 @@
 					return false;
 				}),
 				date = (new Date(block.data.timestamp * 1000));
+
+			if (this.firstUpdate) {
+				this.emit('updateSelected', this.selected);
+				this.firstUpdate = false;
+			}
+
+			$.saveData('selected', this.selected);
 
 			this.render({
 				rates: pairs,
