@@ -1,7 +1,7 @@
 erudit
 ======
 
-===Getting started===
+## Getting started
     npm install
     grunt
     
