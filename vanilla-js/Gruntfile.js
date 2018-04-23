@@ -10,6 +10,7 @@ module.exports = function(grunt) {
 		jshint: {
 			options: {
 				esnext: true,
+				reporterOutput: '',
 			},
 			build: {
 				src: ['src/blocks/**/*.js']
